@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .back-links {
+            margin-bottom: 20px; /* Space below links */
+        }
+        a {
+            background-color: #008CBA; /* Blue color */
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            margin-right: 10px; /* Space between the links */
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Movie</h1>
+
+    <!-- Links for going back to the home page and user's movies -->
+    <div class="back-links">
+        <a href="{{ url_for('home') }}">Back to Home</a>
+        <a href="{{ url_for('user_movies', user_id=user_id) }}">Back to User's Movies</a>
+    </div>
+
+    <form action="{{ url_for('add_movie', user_id=user_id) }}" method="POST">
+        <input type="text" name="title" placeholder="Movie Title" required>
+        <input type="text" name="director" placeholder="Director Name" required>
+        <input type="text" name="genre" placeholder="Genre" required>
+        <input type="number" name="year" placeholder="Year" required>
+        <input type="number" name="rating" placeholder="Rating" step="0.1" required>
+        <button type="submit">Add Movie</button>
+    </form>
+</body>
+</html>
